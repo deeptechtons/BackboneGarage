@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Backbone.js Models - Basics</title>
+</head>
+<body>
+    <!--Include base scripts-->
+    <script src="../scripts/jquery.js" type="text/javascript"></script>
+    <script src="../scripts/underscore.js" type="text/javascript"></script>
+    <script src="../scripts/backbone.js" type="text/javascript"></script>
+    <!--The html template that defines how the model looks-->
+    <script type="text/template" id="positionTemplate">
+    Position is {x:<%= x %>:y:<%=y %>}
+    </script>
+    <!--Actual app example-->
+    <script type="text/javascript">
+
+        //Position model represents the position of the mouse with respect to your browser screen
+        var Position = Backbone.Model.extend({
+            defaults: {
+                x: 0,
+                y: 0
+            }
+        });
+
+        //Position view represents how the position model will look
+        var PositionView = Backbone.View.extend({
+            //by default el = div tag. provide a id just for sake
+            id: "positionView",
+            //html template so that we may use to render
+            template: $("#positionTemplate").html(),
+            //a class name for el
+            className: "position_target",
+            //we are going to listen to mouse move event on el(we will see why)
+            events: {
+                "mousemove": "changePosition"
+            },
+            initialize: function () {
+                //this makes sure all this inside all methods of the view = this view 
+                _.bindAll(this);
+                //when ever the position model changes we re render the view
+                this.model.on("change", this.render);
+            },
+            render: function () {
+                //this empties the el, adds width and height and bg color.replaces the html from the template by taking attributes from model
+                this.$el.empty().css({ width: 400, height: 400, backgroundColor: "#dedede" }).html(_.template(this.template, this.model.toJSON()));
+                //return the view so that we can chain
+                return this;
+            },
+            changePosition: function (ev) {
+                //event handler for mouse move will set x and y from current mouse position
+                this.model.set({ x: ev.clientX, y: ev.clientY });
+            }
+        });
+
+        //create a model instance
+        var positionInstance = new Position();
+
+        //create a position model view
+        var positionView = new PositionView({ model: positionInstance });
+
+        //add to the body that it :)
+        $("body").prepend(positionView.render().el);
+
+    </script>
+</body>
+</html>
