@@ -19,10 +19,13 @@ It is entirely upto you. I provide you full privilege to do something good with 
 
 **Requirements**
 
-- jQuery ( >=1.7 )
+- jQuery ( >=1.8 )
 - Underscore.js
 - Backbone.js (0.92)
-- Script.js ([Github](https://github.com/ded/script.js "Github"))
+- Require.js
+- r.js
+- require.js Text plugin
+- Node.js
 - Twitter Bootstrap
 
 
