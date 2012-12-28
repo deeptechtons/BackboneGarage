@@ -23,8 +23,8 @@ It is entirely upto you. I provide you full privilege to do something good with 
 - Underscore.js
 - Backbone.js (0.92)
 - Require.js
-- r.js
-- require.js Text plugin
+- r.js ( Optimizer Plugin )
+- require.js ( Text plugin )
 - Node.js
 - Twitter Bootstrap
 
