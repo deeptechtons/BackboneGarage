@@ -1,0 +1,39 @@
+﻿body {
+    background-color: #3f3f3f;
+}
+#widgetContainer {
+    margin-top: 100px;
+}
+.widget
+{
+    opacity: 0.9
+}
+.widget .widget-title 
+{
+    padding: 10px 0;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    background-color: #98CA3D;
+}
+.widget-title:hover {
+    background-color: #669A42;
+    color: black;
+    -webkit-transition: background-color .4s linear,color .4s ease;
+}
+.widget .widget-content 
+{
+    padding: 20px 13px;
+    color: #41D6FA;
+    border-radius: 0 0 8px 8px;
+    background-color: #fff;
+}
+*[class*=icon] 
+{
+    cursor: pointer    
+}
+
+.icon-remove:hover {
+    background-image: url("../../bootstrap/img/glyphicons-halflings-white.png");
+}
