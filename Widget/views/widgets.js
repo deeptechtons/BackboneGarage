@@ -16,8 +16,6 @@ define(['text!templates/widgets.html', 'widgetView'], function (widgetsTemplate,
             //after new widget is added to collection render widget
             this.collection.on("add", this.renderNewWidget);
 
-            this.collection.on("change:disabled", this.render);
-
             //after collection is reset render each widget
             this.collection.on("reset", this.render);
 
@@ -40,7 +38,7 @@ define(['text!templates/widgets.html', 'widgetView'], function (widgetsTemplate,
         render: function () {
             this.$el.empty();
             //render enabled widets
-            _.forEach(this.collection.enabledWidgets(), this.renderWidget, this);
+            this.collection.forEach(this.renderWidget);
             return this;
         },
         renderWidgets: function (collection, options) {
@@ -51,7 +49,7 @@ define(['text!templates/widgets.html', 'widgetView'], function (widgetsTemplate,
             new widgetView({ model: widget }).render().$el.appendTo(this.$el);
         },
         renderWidget: function (widget, index, widgets) {
-            new widgetView({ model: widget, position: index }).render().$el.appendTo(this.$el);
+            new widgetView({ model: widget, position: index }).render().$el.toggle(widget.isEnabled()).appendTo(this.$el);
         }
     });
 
