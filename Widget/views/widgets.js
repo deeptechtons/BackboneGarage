@@ -46,9 +46,22 @@ define(['text!templates/widgets.html', 'widgetView'], function (widgetsTemplate,
             _.forEach(this.collection.enabledWidgets(), this.renderWidget, this);
         },
         renderNewWidget: function (widget, widgets, options) {
+            var rowContainer = null;
+            //contains four widget per row
+            var existingItemCount = this.$el.find(">*").length;
+            if (existingItemCount != 0 && existingItemCount  % 4 == 0 ) {
+                rowContainer = $("<div>").addClass("row");
+                this.$el.append(rowContainer);
+              }            
             new widgetView({ model: widget }).render().$el.appendTo(this.$el);
         },
         renderWidget: function (widget, index, widgets) {
+            var rowContainer = null;
+            //contains four widget per row
+            if (index % 3 == 0) {
+                rowContainer = $("<div>").addClass("row");
+                this.$el.append(rowContainer);
+            }
             new widgetView({ model: widget, position: index }).render().$el.toggle(widget.isEnabled()).appendTo(this.$el);
         }
     });

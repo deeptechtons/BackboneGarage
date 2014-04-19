@@ -8,7 +8,7 @@ define(['text!templates/widget.html'], function (widgetTemplate) {
     var widgetView = Backbone.View.extend({
         template: widgetTemplate,
         tagName: 'div',
-        className: 'span4',
+        className: 'span3',
         initialize: function () {
             //Let this = current view for all methods & callbacks
             _.bindAll(this);
