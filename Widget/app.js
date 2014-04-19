@@ -21,7 +21,7 @@ requirejs(["appView", "widgets", 'widgetCreate', 'widgetsView', 'disabledWidgets
 
     new applicationView().render().$el.appendTo("body");
 
-    new disabledWidgetListView({ collection: widgets }).render().$el.appendTo("#DisabledWidgetList");
+    new disabledWidgetListView({ collection: widgets}).render().$el.appendTo("#DisabledWidgetList");
 
     new widgetCreateView({ collection: widgets }).render().$el.appendTo("#CreateWidget");
 

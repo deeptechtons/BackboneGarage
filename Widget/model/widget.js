@@ -23,7 +23,7 @@ define(function () {
             return 0;
             var errorList = [];
             var model = _.extend(changedProperties, this.attributes);
-            if (!model.Title) {
+            if (!model.Title || _.isEmpty(model.Title) || _.isNull(model.Title)) {
                 errorList.push({ Title: "Title is required" });
             }
             if (!model.Content) {
